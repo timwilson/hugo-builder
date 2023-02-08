@@ -32,7 +32,7 @@ while getopts "r:t:" options; do
 done
 
 if [ "$THEME_URL" = "" ]; then
-	echo "No theme URL detected."
+	echo "No theme URL detected. Using default."
 	THEME_URL='https://themes.gohugo.io/themes/hugo-theme-charlolamode/'
 	THEME_NAME='charlolamode'
 elif [ "$THEME_NAME" = "" ]; then
