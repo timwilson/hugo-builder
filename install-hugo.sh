@@ -33,7 +33,7 @@ done
 
 if [ "$THEME_URL" = "" ]; then
 	echo "No theme URL detected. Using default."
-	THEME_URL='https://themes.gohugo.io/themes/hugo-theme-charlolamode/'
+	THEME_URL='https://github.com/charlola/hugo-theme-charlolamode.git'
 	THEME_NAME='charlolamode'
 elif [ "$THEME_NAME" = "" ]; then
 	exit_abnormal
