@@ -1,4 +1,4 @@
-# Build a Jekyll container for website development
+# Build a Hugo container for website development
 FROM klakegg/hugo:ext-debian
 
 # Update and add packages to image
@@ -6,8 +6,3 @@ RUN apt update -qq && \
     DEBIAN_FRONTEND=noninteractive apt install -y \
     bash \
     vim
-
-# Update the Ruby bundler and install Jekyll
-#RUN gem update bundler && gem install bundler jekyll
-
-COPY install-hugo.sh /usr/local/bin/
