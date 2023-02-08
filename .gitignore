@@ -1,5 +1,5 @@
 # Generated files by hugo
-/public/
+public/
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
@@ -14,3 +14,5 @@ hugo.linux
 
 # Ignore Mac stuff
 .DS_Store
+
+.devcontainer
