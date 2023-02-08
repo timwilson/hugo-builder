@@ -41,7 +41,7 @@ fi
 
 hugo new site www
 cd www
-echo THEME_URL: $THEME_URL
-echo THEME_NAME: $THEME_NAME
+echo "Installing '$THEME_NAME' theme ..."
 git submodule add $THEME_URL themes/$THEME_NAME
 echo "theme = '$THEME_NAME'" >> config.toml
+echo "Installation complete."
