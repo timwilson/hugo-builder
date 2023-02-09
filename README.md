@@ -15,7 +15,7 @@ Then run the `build.sh` script to build a new `hugo-site` image based on the off
 
 Once the image is created, open the folder in VSCode and then reopen it in a docker container based on the `Dockerfile-build` Dockerfile.
 
-From the VSCode terminal inside the newly created `jekyll-site` image, run the `install-jekyll.sh` script which will install the necessary tools and create a new Hugo site in the `www` directory.
+From the VSCode terminal inside the newly created `hugo-site` image, run the `install-hugo.sh` script which will install the necessary tools and create a new Hugo site in the `www` directory.
 
 I'm putting the site in the `www` directory because I want to keep it separate from the Dockerfiles and scripts.
 
