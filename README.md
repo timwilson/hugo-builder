@@ -9,15 +9,13 @@ Here are the steps required to use the scripts included in this repo.
 
 This repo has been designated as a template. To create a new Hugo site based on this, simply use the "Use this template" button to create a new repo with these files. Then clone the newly created repo and continue with the instructions below.
 
-Then run the `build.sh` script to build a new `hugo-site` image based on the official `klakegg/hugo:ext-debian` image. The script uses the `Dockerfile-build` file.
+Run the `build.sh` script to build a new `hugo-site` site based on the official `klakegg/hugo:ext-debian` image. The script uses the `Dockerfile.build` file.
 
 ## Install Hugo
 
-Once the image is created, open the folder in VSCode and then reopen it in a docker container based on the `Dockerfile-build` Dockerfile.
+Once the image is created, open the folder in VSCode and then reopen it in a docker container based on the `Dockerfile.build` Dockerfile.
 
-From the VSCode terminal inside the newly created `hugo-site` image, run the `install-hugo.sh` script which will install the necessary tools and create a new Hugo site in the `www` directory.
-
-I'm putting the site in the `www` directory because I want to keep it separate from the Dockerfiles and scripts.
+From the VSCode terminal inside the newly created `hugo-site` image, run the `install-hugo.sh` script which will install the necessary tools and create a new Hugo site in the `www` directory. I'm putting the site in the `www` directory because I want to keep it separate from the Dockerfiles and scripts.
 
 Once the site is created, run the local server with the `hugo server` command.
 
@@ -25,13 +23,13 @@ Now you can go ahead and edit the website, add blog posts, other pages, etc. The
 
 ## Publishing the Site to a Caddy Image
 
-Once the site is ready to publish, run the `publish.sh` script from outside the container to copy the contents of the `public` directory into a new Caddy image based on the published `caddy:2-alpine` docker image. **The script takes the name of the parent directory as the image name.**
+Once the site is ready to publish, run the `publish.sh` script from outside the container to copy the contents of the `public` directory into a new Caddy image based on the published `caddy:2-alpine` docker image. There are two options you can pass to the script.
 
-Run the newly created Caddy image locally with the following command replacing `IMAGE_NAME` with the name of the Caddy image:
+`./publish.sh test` builds the site into a Docker container and runs the container locally so you can see if everything looks OK.
 
-`docker run -p 80:80 IMAGE_NAME`
+`./publish.sh production` builds the site Docker container as a multi-platform image (arm64 and amd64) and pushes it to hub.docker.com. You must add your hub.docker.com username at the top of the `./publish.sh` script right after the initial comment block. **The script takes the name of the parent directory as the image name.**
 
-With the image created, you can publish it to hub.docker.com and run it on your remote host.
+Once the image is pushed to hub.docker.com, you can deploy it to your web server and run it to serve your website. Note: the production image assumes that you'll be running it in conjunction with a reverse proxy that will connect to your website image accepting connections on port 8000 and negotiate the standard and SSL connections on ports 80 and 443 for external clients.
 
 ## Credit
 
