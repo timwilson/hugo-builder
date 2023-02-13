@@ -13,7 +13,7 @@
 # $ ./publish.sh local
 #
 # Set the following to your username at http://hub.docker.com/
-DOCKER_HUB_USERNAME=timothydwilson
+DOCKER_HUB_USERNAME=
 
 BUILD_MODE=$1   # Get commandline argument
 # Use the name of the parent directory for the docker image name

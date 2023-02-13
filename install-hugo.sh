@@ -3,45 +3,45 @@
 # Install Hugo in the folder and create a 'www' directory to store the 
 # markdown and config files.
 
-usage() {
-	echo "Usage: $0 [ -r REPO_URL ] [ -t THEME_NAME ]" 1>&2
-}
+# usage() {
+# 	echo "Usage: $0 [ -r REPO_URL ] [ -t THEME_NAME ]" 1>&2
+# }
 
-exit_abnormal() {
-	usage
-	exit 1
-}
+# exit_abnormal() {
+# 	usage
+# 	exit 1
+# }
 
-while getopts "r:t:" options; do
+# while getopts "r:t:" options; do
 
-	case "${options}" in
-		r)
-			THEME_URL=${OPTARG}
-			;;
-		t)
-			THEME_NAME=${OPTARG}
-			;;
-		:)
-			echo "Error: -${OPTARG} requires an argument."
-			exit_abnormal
-			;;
-		*)
-			exit_abnormal
-			;;
-	esac
-done
+# 	case "${options}" in
+# 		r)
+# 			THEME_URL=${OPTARG}
+# 			;;
+# 		t)
+# 			THEME_NAME=${OPTARG}
+# 			;;
+# 		:)
+# 			echo "Error: -${OPTARG} requires an argument."
+# 			exit_abnormal
+# 			;;
+# 		*)
+# 			exit_abnormal
+# 			;;
+# 	esac
+# done
 
-if [ "$THEME_URL" = "" ]; then
-	echo "No theme URL detected. Using default."
-	THEME_URL='https://github.com/charlola/hugo-theme-charlolamode.git'
-	THEME_NAME='charlolamode'
-elif [ "$THEME_NAME" = "" ]; then
-	exit_abnormal
-fi
+# if [ "$THEME_URL" = "" ]; then
+# 	echo "No theme URL detected. Using default."
+# 	THEME_URL='https://github.com/charlola/hugo-theme-charlolamode.git'
+# 	THEME_NAME='charlolamode'
+# elif [ "$THEME_NAME" = "" ]; then
+# 	exit_abnormal
+# fi
 
 hugo new site www
 cd www
-echo "Installing '$THEME_NAME' theme ..."
-git submodule add $THEME_URL themes/$THEME_NAME
-echo "theme = '$THEME_NAME'" >> config.toml
+# echo "Installing '$THEME_NAME' theme ..."
+# git submodule add $THEME_URL themes/$THEME_NAME
+# echo "theme = '$THEME_NAME'" >> config.toml
 echo "Installation complete."
