@@ -1,8 +1,0 @@
-FROM caddy:2-alpine
-
-# Add any additional packages I need
-RUN apk update
-RUN apk add --no-cache bash
-
-COPY Caddyfile /etc/caddy/Caddyfile
-COPY www/public /srv

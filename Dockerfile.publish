@@ -1,0 +1,12 @@
+FROM caddy:2-alpine
+
+ARG CADDY_SRC=Caddyfile
+
+# Add any additional packages I need
+RUN apk update
+RUN apk add --no-cache \
+	bash \
+	nss-tools
+
+COPY $CADDY_SRC /etc/caddy/Caddyfile
+COPY www/public /srv

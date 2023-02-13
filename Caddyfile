@@ -1,7 +1,5 @@
-:80 {
-	# Set this path to your site's directory.
+# Serve any HTTP request coming in on port 8000
+:8000 {
 	root * /srv
-
-	# Enable the static file server.
 	file_server
 }

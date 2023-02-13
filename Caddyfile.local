@@ -1,0 +1,5 @@
+# Make the site available on localhost:80
+:80 {
+	root * /srv
+	file_server
+}

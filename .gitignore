@@ -14,5 +14,3 @@ hugo.linux
 
 # Ignore Mac stuff
 .DS_Store
-
-.devcontainer
