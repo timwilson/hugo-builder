@@ -1,6 +1,6 @@
 # How to Develop a Hugo Website in a Docker Container
 
-The purpose of this repo is to develop static websites using the Hugo package in a docker
+The purpose of this repo is to develop static websites using the Hugo package in a Docker
 container which can then be bundled and distributed in a Caddy image.
 
 Here are the steps required to use the scripts included in this repo.
@@ -9,15 +9,17 @@ Here are the steps required to use the scripts included in this repo.
 
 This repo has been designated as a template. To create a new Hugo site based on this, simply use the "Use this template" button to create a new repo with these files. Then clone the newly created repo and continue with the instructions below.
 
-Run the `build.sh` script to build a new `hugo-site` site based on the official `klakegg/hugo:ext-debian` image. The script uses the `Dockerfile.build` file.
+Run the `build.sh` script to build a new hugo Docker container based on the official `klakegg/hugo:ext-debian` image. The script uses the `Dockerfile.build` file. You will use this container to run the `hugo` command to build the static version of your website in the future.
+
+**Why work inside a Docker container?** Using Docker containers allow software or website developers to isolate the various depencies required for development projects. A developer may find, for example, that one version of Hugo is necesseary for one website, but another project requires a different version. By developing inside a container, it’s possible to manage those dependencies in a repeatable and predictable way. If two developers are collaborating on a project, it also makes it easier to ensure that both developers are working with the same software even if they’re using different platforms.
 
 ## Install Hugo
 
-Once the image is created, open the folder in VSCode and then reopen it in a docker container based on the `Dockerfile.build` Dockerfile.
+Once the image is created, open the folder in VSCode and then reopen it in a docker container by clicking on the green icon in the lower-left corner of the VSCode window and choosing the “Reopen in Container” option. Choose the `Dockerfile.build` Dockerfile.
 
-From the VSCode terminal inside the newly created `hugo-site` image, run the `install-hugo.sh` script which will install the necessary tools and create a new Hugo site in the `www` directory. I'm putting the site in the `www` directory because I want to keep it separate from the Dockerfiles and scripts.
+From the VSCode terminal inside the newly created hugo container, run the `install-hugo.sh` script which will install the necessary tools and create a new Hugo site in the `www` directory. I'm putting the site in the `www` directory because I want to keep it separate from the Dockerfiles and scripts.
 
-Once the site is created, run the local server with the `hugo server` command.
+Once the site is created, run the local server with the `hugo server` command from inside the `www` directory. The server will automatically rebuild your site as you edit and add pages. You can view a live version of your website at http://localhost:1313/. Use `hugo server -D` if you want the demo server to show draft content.
 
 Now you can go ahead and edit the website, add blog posts, other pages, etc. The site can be tracked in git as any other project.
 
